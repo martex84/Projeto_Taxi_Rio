@@ -18,6 +18,11 @@
     "skipLibCheck": true,
     "strict": true,
     "strictPropertyInitialization": false,
-    "types": ["vitest/globals", "node"]
+    "types": ["vitest/globals", "node"],
+    "paths": {
+      "@usuario/*": ["./src/modules/usuario/*"],
+      "@corridas/*": ["./src/modules/corridas/*"],
+      "@modules/*": ["./src/modules/*"]
+    }
   }
 }
