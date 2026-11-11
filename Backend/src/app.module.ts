@@ -4,6 +4,7 @@ import { UsuarioModule } from '@usuario/usuario.module.js';
 import { CorridasModule } from '@corridas/corridas.module.js';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { UsuarioModel } from '@usuario/entities/usuario.model.js';
+import { CorridasModel } from '@corridas/entities/corridas.model.js';
 
 const captarEnv = (env: string, valorLocal: string) => {
   return new ConfigService().get<string>(env, valorLocal);
@@ -20,7 +21,7 @@ const captarEnv = (env: string, valorLocal: string) => {
       username: captarEnv('DB_USER', 'dev_user'),
       password: captarEnv('DB_PASS', 'dev_password'),
       database: captarEnv('DB_NAME', 'dbrj'),
-      models: [UsuarioModel],
+      models: [UsuarioModel, CorridasModel],
       autoLoadModels: true,
       synchronize: true,
     }),
