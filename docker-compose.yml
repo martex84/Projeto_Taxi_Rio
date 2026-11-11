@@ -1,4 +1,12 @@
 services:
+  # Serviço do Frontend
+  frontend:
+    build: ./Frontend
+    container_name: frontend-rj
+    ports:
+      - 8080:80
+    restart: always
+
   # Serviço do Backend
   backend:
     build: ./Backend
@@ -16,6 +24,7 @@ services:
       mysql:
         condition: service_healthy
 
+  # Banco de dados Mysql
   mysql:
     image: mysql
     container_name: mysql-rj
