@@ -2,18 +2,38 @@ services:
   # Serviço do Backend
   backend:
     build: ./Backend
+    container_name: backend-rj
     ports:
-      - 3001:3001
-    depends_on:
-      - mysql
+      - 3000:3000
     restart: always
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: dev_user
+      DB_PASS: dev_password
+      DB_NAME: dbrj
+    depends_on:
+      mysql:
+        condition: service_healthy
 
   mysql:
     image: mysql
-    ports:
-      - 3307:3306
-    environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_ALLOW_EMPTY_PASSWORD=password
-      - MYSQL_RANDOM_ROOT_PASSWORD=password
+    container_name: mysql-rj
     restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dbrj
+      MYSQL_USER: dev_user
+      MYSQL_PASSWORD: dev_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
