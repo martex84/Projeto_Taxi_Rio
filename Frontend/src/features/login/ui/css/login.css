@@ -1,0 +1,15 @@
+.container {
+  max-width: 450px;
+}
+
+.iconeLogin {
+  max-width: 150px;
+}
+
+.button-login {
+  background-color: #0f1b33;
+
+  &:hover {
+    border: 1px solid #0f1b33;
+  }
+}
