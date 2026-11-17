@@ -28,3 +28,11 @@
 .textoSecundario {
   color: #5b6785;
 }
+
+.textoAlerta {
+  color: #ffc72c;
+}
+
+.fundoAlerta {
+  background-color: #ffc72c;
+}
