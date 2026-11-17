@@ -1,0 +1,30 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f7fb;
+}
+
+.header,
+.footer {
+  background-color: #0f1b33;
+  height: 60px;
+}
+
+.textoPrincipal {
+  color: #0f1b33;
+}
+
+.textoSecundario {
+  color: #5b6785;
+}

@@ -20,7 +20,16 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    // Path
+    "paths": {
+      "@main/*": ["./src/main/*"],
+      "@login/*": ["./src/features/login/*"],
+      "@passageiro/*": ["./src/features/passageiro/*"],
+      "@motorista/*": ["./src/features/motorista/*"],
+      "@shared/*": ["./src/shared/*"]
+    }
   },
   "include": ["src"]
 }
