@@ -5,15 +5,18 @@ import { AppRoutes } from "@main/router/AppRouter";
 import { BrowserRouter } from "react-router-dom";
 import { Footer } from "@main/components/ui/Footer";
 import { Header } from "@main/components/ui/Header";
+import { MainProvider } from "@main/contexts/MainProvider";
 
 function App() {
   return (
     <div className="w-100 h-100 d-flex flex-column justify-content-between">
       <Header />
       <div className="p-3">
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
+        <MainProvider>
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </MainProvider>
       </div>
       <Footer />
     </div>
