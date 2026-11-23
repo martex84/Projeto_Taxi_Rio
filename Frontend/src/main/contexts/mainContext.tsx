@@ -9,6 +9,8 @@ import {
 
 interface MainContext {
   user: User | undefined;
+  captarUsuario: () => User | undefined;
+  salvarUsuario: (user: User) => void;
 }
 
 export const MainContext = createContext<MainContext>({} as MainContext);
@@ -18,9 +20,19 @@ export function MainContextProvider({
 }: Readonly<{ children: ReactNode }>) {
   const [user, setUser] = useState<User | undefined>();
 
+  function salvarUsuario(user: User): void {
+    setUser(user);
+  }
+
+  function captarUsuario(): User | undefined {
+    return user;
+  }
+
   const memo = useMemo(
     () => ({
       user,
+      captarUsuario,
+      salvarUsuario,
     }),
     [user],
   );
