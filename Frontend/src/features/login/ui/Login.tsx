@@ -1,15 +1,13 @@
+import loginHook from "@login/hooks/loginHook";
 import "./css/login.css";
 import { requisicao } from "@shared/services/axios-api";
 import { BsCarFront } from "react-icons/bs";
 
+// TODO: Fazer com que seja validado se o usuário está salvo, se tiver irar seguir para  tela usuário/motorista
+
 export function Login() {
-  async function login() {
-    try {
-      await requisicao().get("/usuario/login");
-    } catch (error) {
-      console.error(error);
-    }
-  }
+
+  const hook = loginHook();
 
   return (
     <div className="container">
@@ -21,7 +19,7 @@ export function Login() {
             </div>
             <h1 className="card-title h4 text-center">Bem Vindo ao Taxi.Rio</h1>
           </div>
-          <form className="d-flex row justify-content-center g-3">
+          <div className="d-flex row justify-content-center g-3">
             <div className="">
               <label className="form-label" htmlFor="emailForm">
                 E-mail
@@ -47,10 +45,14 @@ export function Login() {
                 E-mail ou senha inválido
               </div>
             </div>
-            <button type="submit" className="btn w-25 textoAlerta button-login">
+            <button
+              type="button"
+              className="btn w-25 textoAlerta button-login"
+              onClick={() => hook.realizarLogin()}
+            >
               Submit
             </button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
