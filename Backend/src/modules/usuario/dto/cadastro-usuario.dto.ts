@@ -1,6 +1,12 @@
-import { IS_NOT_EMPTY } from 'class-validator';
+import { LoginUsuario } from '@usuario/dto/login-usuario.dto.js';
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
-export class CadastroUsuario {
+export class CadastroUsuario extends LoginUsuario {
+  @IsNotEmpty()
+  @IsString()
   nome: string;
-  senha: string;
+
+  @IsNotEmpty()
+  @IsString()
+  tipo: string;
 }

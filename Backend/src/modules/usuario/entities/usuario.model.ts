@@ -35,7 +35,7 @@ export class UsuarioModel extends Model<
   @Column({
     type: DataType.STRING,
   })
-  declare password: string;
+  declare senha: string;
 
   @Column({
     type: DataType.STRING,

@@ -1,30 +1,31 @@
 services:
   # Serviço do Frontend
-  frontend:
-    build: ./Frontend
-    container_name: frontend-rj
-    ports:
-      - 8080:80
-    restart: always
-    depends_on:
-      - backend
+  # frontend:
+  #   build: ./Frontend
+  #   container_name: frontend-rj
+  #   ports:
+  #     - 8080:80
+  #   restart: always
+  #   depends_on:
+  #     - backend
 
   # Serviço do Backend
-  backend:
-    build: ./Backend
-    container_name: backend-rj
-    ports:
-      - 3000:3000
-    restart: always
-    environment:
-      DB_HOST: mysql
-      DB_PORT: 3306
-      DB_USER: dev_user
-      DB_PASS: dev_password
-      DB_NAME: dbrj
-    depends_on:
-      mysql:
-        condition: service_healthy
+  # backend:
+  #   build: ./Backend
+  #   container_name: backend-rj
+  #   ports:
+  #     - 3000:3000
+  #   restart: always
+  #   environment:
+  #     DB_HOST: mysql
+  #     DB_PORT: 3306
+  #     DB_USER: dev_user
+  #     DB_PASS: dev_password
+  #     DB_NAME: dbrj
+  #     JWT_SECRET: testeSecret
+  #   depends_on:
+  #     mysql:
+  #       condition: service_healthy
 
   # Banco de dados Mysql
   mysql:
