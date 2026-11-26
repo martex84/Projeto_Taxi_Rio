@@ -6,6 +6,9 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { UsuarioModel } from '@usuario/entities/usuario.model.js';
 import { CorridasModel } from '@corridas/entities/corridas.model.js';
 import { AuthModule } from '@modules/auth/auth.module.js';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthGuard } from '@modules/auth/auth.guard.js';
+import { AuthService } from '@modules/auth/auth.service.js';
 
 const captarEnv = (env: string, valorLocal: string) => {
   return new ConfigService().get<string>(env, valorLocal);
@@ -33,6 +36,11 @@ const captarEnv = (env: string, valorLocal: string) => {
     }),
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ],
 })
 export class AppModule {}
