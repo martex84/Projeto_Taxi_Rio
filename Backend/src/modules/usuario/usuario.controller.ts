@@ -9,8 +9,7 @@ export class UsuarioController {
 
   @Post('login')
   async loginUsuario(@Body() login: LoginUsuario) {
-    const token = await this.usuarioService.login(login);
-    return { token };
+    return { token: await this.usuarioService.login(login) };
   }
 
   @Post('cadastro')

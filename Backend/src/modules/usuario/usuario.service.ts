@@ -8,22 +8,10 @@ export class UsuarioService {
   constructor(private readonly usuarioPort: UsuarioPort) {}
 
   async login(login: LoginUsuario): Promise<string> {
-    const { email, senha } = login;
-
-    return await this.usuarioPort.login({
-      email,
-      senha,
-    });
+    return await this.usuarioPort.login(login);
   }
 
   async cadastrarUsuario(cadastrarUsuario: CadastroUsuario): Promise<string> {
-    const { nome, senha, email, tipo } = cadastrarUsuario;
-
-    return await this.usuarioPort.cadastrarUsuario({
-      nome,
-      senha,
-      email,
-      tipo,
-    });
+    return await this.usuarioPort.cadastrarUsuario(cadastrarUsuario);
   }
 }
