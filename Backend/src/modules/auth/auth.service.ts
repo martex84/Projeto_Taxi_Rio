@@ -22,10 +22,10 @@ export class AuthService {
   }
 
   async validarToken(token: string): Promise<JwtPayload> {
-    console.log('TOKEN', token);
     try {
       return await this.jwtService.verifyAsync<JwtPayload>(token);
     } catch (error) {
+      console.error('VALIDACAO_TOKEN', error);
       throw new Error('Token inválido ou expirado!');
     }
   }
